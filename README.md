@@ -12,8 +12,11 @@ AI competition built on Node.js. Players create bots in JavaScript.
 
  - Battles can be run in **Fast** mode or **Visual** mode (screenshots below). Visual mode runs three games and allows you to step through them at various speeds.
 
+## Fast Mode ##
+
 <img alt="Fast Mode Screenshot" src="https://raw.github.com/gotdibbs/Battleship/master/fast.png" style="border: 1px solid #444;" />
-> Fast Mode
+
+## Visual Mode ##
 
 <img alt="Visual Mode Screenshot" src="https://raw.github.com/gotdibbs/Battleship/master/visual.png" style="border: 1px solid #444;" />
-> Visual Mode
+
