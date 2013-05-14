@@ -1,0 +1,34 @@
+extends layout
+
+block innerContent
+	link(rel='stylesheet', href='/css/upload.css')
+
+	div.row
+		#formHeader.span12
+			h3 Upload Your Completed AI
+			hr
+		#formSection.span12
+			if typeof(message) !== 'undefined'
+				div.alert= message
+
+			i
+				| Note that your AI class name must match the final name of your file (minus the '.js' extension).
+			br
+			br
+			form.form(action='/upload', method='POST', enctype='multipart/form-data')
+				label(for='ai-name')
+					strong 
+						| Choose AI Name:&nbsp;
+						span(style='color: red;') *
+				input.required(type='text', name='aiName', id='aiName')
+				br
+				label(for='upload')
+					strong 
+						| Choose AI Script:&nbsp;
+						span(style='color: red;') *
+				input(type='file', name='aiScript', id='upload', style='display: none;')
+				div.input-append
+					input#aiPicker.required(type='text')
+					a#pickAIButton.btn Browse
+				hr
+				input.btn.btn-primary.btn-large(type='submit', value='Upload')

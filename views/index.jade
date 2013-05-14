@@ -1,0 +1,80 @@
+extends layout
+
+block innerContent
+	#container.span12
+		h1 Welcome to the battle!
+		br
+		dl.dl-horizontal
+			dt Upload
+			dd ... to register your AI for battle.
+			dt Fast Battle
+			dd ... to run a lot of battles really quickly without any frills.
+			dt Visual Battle
+			dd ... to watch your battles play out in all their glory!
+		hr
+	#rules.span5
+		h4 Rules of the Game
+		ol
+			li
+				| The game is to be played on a 10 x 10 grid.
+			li
+				| Each of the two players must place all ships given on to the grid.
+			li
+				| No ships may overlap, but they may be adjacent.
+			li
+				| The players take turns firing a single shot at their opponent.
+			li
+				| Game play ends when all of the ships of any one player are sunk, or each player has had 100 turns.
+	#download.offset1.span5
+		h4 Download Competition Package
+		span
+			| Package includes a test page to invoke your AI functions locally. In order to test
+			| board setup or run against another AI, you must use this website.
+		br
+		br
+		span.well(style='text-align: center; margin-top: 10px; display: block;')
+			a(href='competition-package.zip') Download now to get started!
+	hr.span12
+	#structure.span12
+		h4 Structure of Your AI
+		ol
+			li
+				| Setup the basics by following the below pattern, using the AI base class provided.
+				pre
+					| function Dumbot() { }
+					| AI.subClass(Dumbot);
+					| 
+					| Dumbot.prototype.setupBoard = function setupBoard(ships) {
+					| 
+					| };
+					| 
+					| Dumbot.prototype.fire = function fire(myMoves, theirMoves) {
+					| 
+					| };
+			br
+			li
+				| Implement your setupBoard function. It should take in an array of ship sizes.
+				| By default the ship sizes are [2, 3, 3, 4, 5], but may change!
+				| It should return an array of Battleship.Placement objects (basically just {x,y} coordinates).
+				| See the Dumbot and Randombot implementations in order to see a sample.
+			br
+			li
+				| Implement your fire function. The function will be passed your movement history as
+				| well as your opponents movement history. Do what you want with those values, and then
+				| return a Battleship.Point which is your target for the round. Again see the Dumbot and Randombot 
+				| implementations in order to see a sample.
+			br
+			b Notes: 
+			ol
+				li
+					| You can store state across games by storing things in the global variable called 'global'
+					| which will be accessible per each set of battles. 
+				li
+					| If you want to check if its the first move, check the length of the moves array's passed 
+					| to your fire function. 
+				li
+					| The isSunk, isHit, and shipSize variables on a move instance will be set upon completion of a player's 
+					| move and will be accessible in your fire function.
+				li
+					| Errors during a battle ran through this site are logged to the developer console. If an error
+					| is encountered in your code, you lose that round.

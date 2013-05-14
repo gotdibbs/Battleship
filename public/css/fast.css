@@ -1,0 +1,37 @@
+﻿input#gameCount
+{
+    width: 60px;
+}
+
+div.span4, div.span5 
+{
+	padding-top: 60px;
+}
+
+.loader
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.loaderBackground
+{
+    height: 100%;
+    width: 100%;
+    background: #FFFFFF;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+
+.loader img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -27px;
+    margin-left: -27px;
+}

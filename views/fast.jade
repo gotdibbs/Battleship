@@ -1,0 +1,44 @@
+extends layout
+
+block innerContent
+	link(rel='stylesheet', href='/css/fast.css')
+	script(src='/js/fast.js')
+
+	div.row
+		#aiListContainer.span12
+			h3 Select Two to Battle!
+			hr
+		#setupContainer.span6
+			label(for='player1')
+				strong Player 1:
+			select#player1
+			br
+			br
+			label(for='player2')
+				strong Player 2:
+			select#player2
+			br
+			br
+			#gameCountContainer
+				label(for='gameCount') 
+					strong Number of games:
+				input#gameCount(type='text')
+			hr
+			#startGamesContainer
+				input#startGamesBtn.btn.btn-primary.btn-large(type='button', value='Start')
+		#results.span6
+			#player1Wins.well
+				strong Player 1 Wins:
+				span.badge(style='margin-left: 5px; font-size: 1.5em; float: right;') 0.00%
+			#player2Wins.well
+				strong Player 2 Wins:
+				span.badge(style='margin-left: 5px; font-size: 1.5em; float: right;') 0.00%
+			#ties.well
+				strong Ties:
+				span.badge(style='margin-left: 5px; font-size: 1.5em; float: right;') 0.00%
+			#time.well
+				img(src='/img/clock.png')
+				span.badge.badge-info(style='margin-left: 5px; font-size: 1.5em; float: right;') 0.00s
+	div.loader
+		div.loaderBackground
+		img(alt='Loading...', src='/img/loader.gif')

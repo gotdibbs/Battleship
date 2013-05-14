@@ -1,0 +1,58 @@
+extends layout
+
+block innerContent
+	link(rel='stylesheet', href='/css/visual.css')
+	script(src='/js/visual.js')
+
+	div.row
+		#setupContainer.span6
+			h3 Select Two to Battle!
+			hr
+			label(for='player1')
+				strong Player 1:
+			select#player1
+			br
+			br
+			label(for='player2')
+				strong Player 2:
+			select#player2
+			br
+			br
+			label(for='delay')
+				strong Move Delay (ms):
+			input(type='text', id='delay', value='200')
+			hr
+			#startGamesContainer
+				input#startGamesBtn.btn.btn-primary.btn-large(type='button', value='Start')
+		#results.span6
+			h3 
+				span Game #:&nbsp;
+				span#gameNumber --
+			#player1board.well(style='text-align: center;')
+				strong Player 1
+					span.badge.badge-success#player1Wins(style='margin-left: 10px;') 0
+				.board
+					- var dimensions = [0,1,2,3,4,5,6,7,8,9];
+					- each row in dimensions
+						- each column in dimensions
+							span.badge(id='x_' + column + '_y_' + row)
+								| &nbsp;
+						br
+			#player2board.well(style='text-align: center;')
+				strong Player 2
+					span.badge.badge-success#player2Wins(style='margin-left: 10px;') 0
+				.board
+					- var dimensions = [0,1,2,3,4,5,6,7,8,9];
+					- each row in dimensions
+						- each column in dimensions
+							span.badge(id='x_' + column + '_y_' + row)
+								| &nbsp;
+						br
+			#controlPanel.well.well-small(style='text-align: center;')
+				.btn.btn-primary.disabled#previous(style='width: 75px; float: left;') &lt; Previous
+				.btn.btn-primary.disabled#replay(style='width: 75px;') Replay
+				.btn.btn-primary.disabled#next(style='width: 75px; float: right;') Next &gt;
+
+	div.loader
+		div.loaderBackground
+		img(alt='Loading...', src='/img/loader.gif')

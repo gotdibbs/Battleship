@@ -1,0 +1,40 @@
+!!!
+html
+	include inc/header
+
+	body
+		div.navbar.navbar-fixed-top
+			div.navbar-inner
+				div.container
+					a(data-toggle='collapse', data-target='.nav-collapse').btn.btn-navbar
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a(href='/').brand Battleship
+					ul.nav
+						- var obj = { 'upload':'Upload', 'fast': 'Fast Battle', 'visual': 'Visual Battle' }
+						- each val, key in obj
+							- if (id == key)
+								li.active
+									a(href='#{key}') #{val}
+							- else
+								li
+									a(href='#{key}') #{val}
+									
+					ul.nav.pull-right
+						li.divider-vertical
+						- if (!user)
+							li
+								a(href='#', id='browserid') Login
+						- else
+							li
+								a(href='/logout') Logout
+						li.divider-vertical
+
+		div.container
+			block innerContent
+			
+			form(action='/auth/browserid', method='post', style='display:none;')
+				input(type='text', name='assertion')
+			
+			include inc/footer
