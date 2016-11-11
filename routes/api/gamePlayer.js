@@ -271,16 +271,16 @@ function getGames(params) {
 	try {
 		_setupBot(sandbox1, player1);
 	}
-	catch (ex) {
-		_log(ex.message);
-		return [{ winner: 2, player1_moves: [], player2_moves: [], player1LastError: ex.message + " " + er.stack }];
+	catch (er) {
+		_log(er.message);
+		return [{ winner: 2, player1_moves: [], player2_moves: [], player1LastError: er.message + " " + er.stack }];
 	}
 	try {
 		_setupBot(sandbox2, player2);
 	}
-	catch (ex) {
+	catch (er) {
 		_log(ex.message);
-		return [{ winner: 1, player1_moves: [], player2_moves: [], player2LastError: ex.message + " " + er.stack }];
+		return [{ winner: 1, player1_moves: [], player2_moves: [], player2LastError: er.message + " " + er.stack }];
 	}
 	
 	while (numberOfGames-- > 0) { 
